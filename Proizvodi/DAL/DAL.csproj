@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201903261554442_create-db.Designer.cs">
       <DependentUpon>201903261554442_create-db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903262017449_update-db.cs" />
+    <Compile Include="Migrations\201903262017449_update-db.Designer.cs">
+      <DependentUpon>201903262017449_update-db.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\ProizvodiContext.cs" />
     <Compile Include="Models\Proizvod.cs" />
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903261554442_create-db.resx">
       <DependentUpon>201903261554442_create-db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903262017449_update-db.resx">
+      <DependentUpon>201903262017449_update-db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
