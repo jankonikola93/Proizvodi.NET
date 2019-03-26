@@ -10,8 +10,9 @@ namespace DAL.Models.Context
 {
     public class ProizvodiContext : DbContext
     {
-        public ProizvodiContext() : base("ProizvodiContext")
+        public ProizvodiContext() : base("name=ProizvodiContext")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ProizvodiContext>());
         }
 
         public DbSet<Proizvod> Proizvod { get; set; }

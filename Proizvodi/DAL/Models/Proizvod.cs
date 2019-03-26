@@ -14,6 +14,6 @@ namespace DAL.Models
         public string Kategorija { get; set; }
         public string Proizvodjac { get; set; }
         public string Dobavljac { get; set; }
-        public float Cena { get; set; }
+        public double Cena { get; set; }
     }
 }
