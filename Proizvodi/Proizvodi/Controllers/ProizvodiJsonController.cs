@@ -8,12 +8,12 @@ using System.Web.Mvc;
 
 namespace Proizvodi.Controllers
 {
-    public class ProizvodiController : Controller
+    public class ProizvodiJsonController : Controller
     {
         private readonly IService<ProizvodViewModel> proizvodiService;
-        public ProizvodiController()
+        public ProizvodiJsonController()
         {
-            this.proizvodiService = new ProizvodiService();
+            this.proizvodiService = new ProizvodiServiceJson();
         }
         // GET: Proizvodi
         public ActionResult Index()

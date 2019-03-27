@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAL", "BAL\BAL.csproj", "{A32913DF-6614-420E-B033-7EF2B4230D6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALzaJSON", "DALzaJSON\DALzaJSON.csproj", "{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A32913DF-6614-420E-B033-7EF2B4230D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A32913DF-6614-420E-B033-7EF2B4230D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A32913DF-6614-420E-B033-7EF2B4230D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
