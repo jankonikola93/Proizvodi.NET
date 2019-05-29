@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28822.285
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proizvodi", "Proizvodi\Proizvodi.csproj", "{AE71D535-0511-4F2B-8A2F-E8A133FCA661}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAL", "BAL\BAL.csproj", "{A32913DF-6614-420E-B033-7EF2B4230D6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALzaJSON", "DALzaJSON\DALzaJSON.csproj", "{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2A8C39A7-53A1-439F-B02F-11561BA41FD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4650BCD-2C8C-40CC-9A35-4B3A1EF51660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8C39A7-53A1-439F-B02F-11561BA41FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8C39A7-53A1-439F-B02F-11561BA41FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8C39A7-53A1-439F-B02F-11561BA41FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8C39A7-53A1-439F-B02F-11561BA41FD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED7396BB-6E8F-4A0B-9417-3450CE106D35}
 	EndGlobalSection
 EndGlobal

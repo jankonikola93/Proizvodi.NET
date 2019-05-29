@@ -11,19 +11,19 @@ using System.Linq.Expressions;
 
 namespace BAL.Services
 {
-    public class ProizvodiService : IService<ProizvodViewModel>
+    public class ProizvodiService : IProizvodiService
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IGenericRepository<Proizvod> proizvodiRepozitoryService;
-        public ProizvodiService()
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<Proizvod> _proizvodiRepozitoryService;
+        public ProizvodiService(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = new UnitOfWork();
-            this.proizvodiRepozitoryService = unitOfWork.GenericRepository<Proizvod>();
+            _unitOfWork = unitOfWork;
+            _proizvodiRepozitoryService = unitOfWork.GenericRepository<Proizvod>();
         }
 
         public IEnumerable<ProizvodViewModel> GetAll()
         {
-            var proizvodi = proizvodiRepozitoryService.GetAll();
+            var proizvodi = _proizvodiRepozitoryService.GetAll();
             if (proizvodi == null)
                 return null;
             var viewModel = from p in proizvodi
@@ -42,7 +42,7 @@ namespace BAL.Services
 
         public ProizvodViewModel GetById(int id)
         {
-            var p = proizvodiRepozitoryService.GetById(id);
+            var p = _proizvodiRepozitoryService.GetById(id);
             if (p == null)
                 return null;
             var viewModel = new ProizvodViewModel
@@ -71,12 +71,12 @@ namespace BAL.Services
             };
             try
             {
-                proizvodiRepozitoryService.Create(entity);
-                unitOfWork.Save();
+                _proizvodiRepozitoryService.Create(entity);
+                _unitOfWork.Save();
             }
             catch (Exception e)
             {
-                unitOfWork.LogError(e.ToString());
+                _unitOfWork.LogError(e.ToString());
                 return false;
             }
             return true;
@@ -96,12 +96,12 @@ namespace BAL.Services
             };
             try
             {
-                proizvodiRepozitoryService.Update(entity);
-                unitOfWork.Save();
+                _proizvodiRepozitoryService.Update(entity);
+                _unitOfWork.Save();
             }
             catch (Exception e)
             {
-                unitOfWork.LogError(e.ToString());
+                _unitOfWork.LogError(e.ToString());
                 return false;
             }
             return true;
@@ -111,12 +111,12 @@ namespace BAL.Services
         {
             try
             {
-                proizvodiRepozitoryService.Delete(id);
-                unitOfWork.Save();
+                _proizvodiRepozitoryService.Delete(id);
+                _unitOfWork.Save();
             }
             catch (Exception e)
             {
-                unitOfWork.LogError(e.ToString());
+                _unitOfWork.LogError(e.ToString());
                 return false;
             }
             return true;

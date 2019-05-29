@@ -10,15 +10,15 @@ namespace Proizvodi.Controllers
 {
     public class ProizvodiJsonController : Controller
     {
-        private readonly IService<ProizvodViewModel> proizvodiService;
-        public ProizvodiJsonController()
+        private readonly IProizvodiServiceJson _proizvodiService;
+        public ProizvodiJsonController(IProizvodiServiceJson proizvodiService)
         {
-            this.proizvodiService = new ProizvodiServiceJson();
+            _proizvodiService = proizvodiService;
         }
         // GET: Proizvodi
         public ActionResult Index()
         {
-            var viewModel = proizvodiService.GetAll();
+            var viewModel = _proizvodiService.GetAll();
             return View(viewModel);
         }
         // GET Proizvodi/Edit/id
@@ -26,7 +26,7 @@ namespace Proizvodi.Controllers
         {
             if (id <= 0)
                 return Content("Parametar ID mora biti veci od 0");
-            var viewModel = proizvodiService.GetById(id);
+            var viewModel = _proizvodiService.GetById(id);
             if (viewModel == null)
                 return HttpNotFound();
             return View(viewModel);
@@ -38,7 +38,7 @@ namespace Proizvodi.Controllers
         {
             if (!ModelState.IsValid)
                 return View(viewModel);
-            var result = proizvodiService.Update(viewModel);
+            var result = _proizvodiService.Update(viewModel);
             if (result)
                 return RedirectToAction("Index");
             return Content("Neuspesno!");
@@ -57,7 +57,7 @@ namespace Proizvodi.Controllers
         {
             if (!ModelState.IsValid)
                 return View(viewModel);
-            var result = proizvodiService.Create(viewModel);
+            var result = _proizvodiService.Create(viewModel);
             if (result)
                 return RedirectToAction("Index");
             return Content("Neuspesno!");
@@ -68,7 +68,7 @@ namespace Proizvodi.Controllers
         {
             if (id <= 0)
                 return Content("Parametar ID mora biti veci od 0");
-            var viewModel = proizvodiService.GetById(id);
+            var viewModel = _proizvodiService.GetById(id);
             if (viewModel == null)
                 return HttpNotFound();
             return View(viewModel);
@@ -81,10 +81,10 @@ namespace Proizvodi.Controllers
         {
             if (id <= 0)
                 return Content("Parametar ID mora biti veci od 0");
-            var viewModel = proizvodiService.GetById(id);
+            var viewModel = _proizvodiService.GetById(id);
             if (viewModel == null)
                 return HttpNotFound();
-            var result = proizvodiService.Delete(id);
+            var result = _proizvodiService.Delete(id);
             if (result)
                 return RedirectToAction("Index");
             return Content("Neuspesno!");

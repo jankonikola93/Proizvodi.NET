@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace BAL.Services
 {
-    public class ProizvodiServiceJson : IService<ProizvodViewModel>
+    public class ProizvodiServiceJson : IProizvodiServiceJson
     {
-        private readonly IJsonService<ProizvodDTO> proizvodiJsonService;
-        private readonly string jsonFilePath;
-        public ProizvodiServiceJson()
+        private readonly IJsonService<ProizvodDTO> _proizvodiJsonService;
+        //private readonly string jsonFilePath;
+        public ProizvodiServiceJson(IJsonService<ProizvodDTO> proizvodiJsonService)
         {
-            this.jsonFilePath = ConfigurationManager.AppSettings["JsonFilePath"].ToString();
-            this.proizvodiJsonService = new ProizvodiJsonService(jsonFilePath);
+            //this.jsonFilePath = ConfigurationManager.AppSettings["JsonFilePath"].ToString();
+            _proizvodiJsonService = proizvodiJsonService;
         }
         public IEnumerable<ProizvodViewModel> GetAll()
         {
-            var proizvodi = proizvodiJsonService.GetAll();
+            var proizvodi = _proizvodiJsonService.GetAll();
             if (proizvodi == null)
                 return null;
             var viewModel = from p in proizvodi
@@ -40,7 +40,7 @@ namespace BAL.Services
 
         public ProizvodViewModel GetById(int id)
         {
-            var p = proizvodiJsonService.GetById(id);
+            var p = _proizvodiJsonService.GetById(id);
             if (p == null)
                 return null;
             var viewModel = new ProizvodViewModel
@@ -58,7 +58,7 @@ namespace BAL.Services
 
         public bool Create(ProizvodViewModel t)
         {
-            var list = proizvodiJsonService.GetAll();
+            var list = _proizvodiJsonService.GetAll();
             int poslednjiId = 1;
             if(list.Count > 0)
                 poslednjiId = list.Max(p => p.ID) + 1;
@@ -73,7 +73,7 @@ namespace BAL.Services
                 Opis = t.Opis,
                 Proizvodjac = t.Proizvodjac
             };
-            return proizvodiJsonService.Create(entity);
+            return _proizvodiJsonService.Create(entity);
         }
 
         public bool Update(ProizvodViewModel t)
@@ -88,12 +88,12 @@ namespace BAL.Services
                 Opis = t.Opis,
                 Proizvodjac = t.Proizvodjac
             };
-            return proizvodiJsonService.Update(entity);
+            return _proizvodiJsonService.Update(entity);
         }
 
         public bool Delete(int id)
         {
-            return proizvodiJsonService.Delete(id);
+            return _proizvodiJsonService.Delete(id);
         }
     }
 }

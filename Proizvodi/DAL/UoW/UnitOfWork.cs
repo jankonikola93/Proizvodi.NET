@@ -12,11 +12,11 @@ namespace DAL.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ProizvodiContext context;
+        private readonly ProizvodiContext _context;
         private Dictionary<string, object> repositories;
-        public UnitOfWork()
+        public UnitOfWork(ProizvodiContext context)
         {
-            this.context = new ProizvodiContext();
+            _context = context;
         }
 
         public IGenericRepository<TEntity> GenericRepository<TEntity>() where TEntity : class
@@ -31,7 +31,7 @@ namespace DAL.UoW
             if (!repositories.ContainsKey(type))
             {
                 var repositoryType = typeof(GenericRepository<>);
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), context);
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
                 repositories.Add(type, repositoryInstance);
             }
             return (IGenericRepository<TEntity>)repositories[type];
@@ -39,7 +39,7 @@ namespace DAL.UoW
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void LogError(string error)
@@ -74,7 +74,7 @@ namespace DAL.UoW
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
-                    context.Dispose();
+                    _context.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
